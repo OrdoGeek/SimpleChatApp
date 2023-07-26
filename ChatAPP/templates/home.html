@@ -1,0 +1,33 @@
+<!--Let's create the Join Room-->
+
+{% extends 'base.html' %} <!--This says we are extending our base template. Home is a child of base-->
+{% block content %}
+<!--All i write in this block will be shown in the base doc in the div class="content"-->
+<!--We will use a form cuz we need to recive data in the backend-->
+<form method="post" class="buttons">
+    <!--post as method cuz when we click the submit button, it is goint to send a post request to the 
+    current page(home)-->
+
+    <h3 class="title">Enter To The Chat Room</h3>
+    <div>
+        <label class="name" id="input-text">Name: </label>
+        <input id="input-text" type="text" placeholder="¡Type your name!" name="name" value="{{name}}"/>
+        <!--"name" it really important cuz it is what we are gonna use for access to the value inside of the
+        flask server. It is how we identify the "name" in python. Value is in that way cuz we are gonna pass
+        the name that the user has typed-->
+    </div>
+    <div class="join">
+        <input id="input-text" type="text" placeholder="Room Code" name="code" value="{{code}}"/>
+        <button type="submit" name="join" id="home-btn">Join a Room</button>
+    </div>
+    <button type="submit" name="create" class="create-btn" id="home-btn">Create a Room</button>
+
+    {% if error%}
+    <ul>
+        <li>{{error}}</li>
+    </ul>
+    {% endif %}
+
+</form>
+
+{% endblock %}

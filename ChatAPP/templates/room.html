@@ -1,0 +1,66 @@
+<!--Let's create the Messages Room-->
+
+{% extends 'base.html' %} <!--This says we are extending our base template. Home is a child of base-->
+{% block content %}
+
+<div class="message-box">
+    <div class="header"><h2>Chat Room: {{code}}</h2></div>
+    <div class="messages" id="messages"></div><!--This div will be empty, we will store the messages from our Socket Server--> 
+    <div class="inputs">
+        <input
+            type="text"
+            rows="3"
+            placeholder="Write Your Message"
+            name="message"
+            id="message"
+        />
+        <button type="button" name="send" id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // a variable
+    var socketio = io(); //we can call the io() cuz we already have the library in the base.html doc (it is the link)
+    
+    const messages = document.getElementById("messages"); //Here it gets the element in the div in line 8
+    
+    const createMessage = (name, msg) => {
+        const content = `
+        <div class="text">
+            <span>
+                <strong>${name}</strong>: ${msg}
+            </span>
+            <span class="muted">
+                ${new Date().toLocaleString()}
+            </span>
+        </div>
+        `;
+        messages.innerHTML += content;
+        //Date().toLocaleString() gets the time when the message was recived. But if we refresh the page, it will
+        //change to the time when we refreshed
+    };
+
+    //Here will run when it is sent a message (because of the message event transmited by our flask server)
+    socketio.on("message", (data) => { //data has the name and the message
+        createMessage(data.name, data.message);
+    });
+
+    // this is the function (parameters) => {function's body}
+    // When it initialized socketio, there ir a direct connection to the socket server, which is hosted in localhost
+    // See line 130 in main.py
+    const sendMessage = () => {
+        const message = document.getElementById("message"); //It gets the id message (div in lines 10 to 15)
+        if (message.value == "") return;//if the message has no value (empty string)
+        socketio.emit("message", {data: message.value});//Here, the server is emitting a new event called "message" (this is json data)
+        message.value = ""; //Here we get rid of whatever value which is in the text box, in order to full with the next one and so on.
+    };
+
+</script>
+
+<!--We do this because we want to store the messages history-->
+{% for msg in messages %}
+<script type="text/javascript">
+    createMessage("{{msg.name}}","{{msg.message}}");
+</script>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,143 @@
+*{
+    font-family: ubuntu;
+}
+
+body{
+    background-color: rgba(194, 183, 182, 1);
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column; /*column locates the boxes in vertical position ; row in horizontal. Cuz
+    this property (flex-direction) says the main axis in the flexbox*/
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /*This puts an space of 10px between all boxes I have inside the class buttons*/
+}
+
+.join{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.create-btn{
+    width: 100%;
+}
+
+#send-btn{
+    font-size: small;
+    width: 10%;
+    background-color: rgba(179, 160, 160, 0.5);
+    border-radius: 5px;
+    color:white;
+    border:none;
+}
+
+#send-btn:hover{
+    background-color:white;
+    color:black;
+}
+
+.message-box{
+    border-radius: 10px;
+    height: 97vh; /*Means 90% of the height of the viewport (area of a web page that's visible to the user)*/
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /*Items are stretched to fit the container*/
+    box-shadow: 2px 2px 20px rgba(0, 0, 0,0.5);
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.messages{
+    overflow-y: scroll; /*Locates a scroll bar*/
+    flex: 1; /*this means that the other boxes (not the first one) will be set automatically for me
+    See #message, the field to write is bigger*/
+    width: 100%;
+    color:white;
+}
+
+.inputs{
+    padding: 10px;
+    display: flex;
+    height: 7%;
+}
+
+h2{
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+}
+
+#message{
+    flex: 1;
+    color:white;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+    background-color: rgba(179, 160, 160, 0.5);
+}
+
+#message::placeholder{
+    color:white;
+}
+#input-text::placeholder{
+    color:rgba(0,0,0,0.5);
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.muted{
+    font-size: 10px;
+    color:darkgray;
+}
+
+.header{
+    background-color: rgba(179, 160, 160, 0.5);
+    border-radius: 10px 10px 0 0;
+}
+
+.title{
+    padding-top: 11em;
+}
+
+.name{
+    font-weight: bold;
+}
+
+#home-btn{
+    background-color:rgba(0, 0, 0,1);
+    color:white;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+    height: 1.7rem;
+}
+
+#home-btn:hover{
+    background-color:white;
+    color:black;
+}
+
+#input-text{
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+    height: 1.7rem;
+}
+
+

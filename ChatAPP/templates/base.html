@@ -1,0 +1,27 @@
+<!--html:5 is an extension for writing the entire html document-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat APP</title>
+    <link
+        rel="stylesheet"
+        href="{{url_for('static', filename='css/style.css')}}"        
+    />
+    <!--url_for will generate a dinamic URL for the static folder-->
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--The next allows us to use SocketIO module-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+    integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--block content is a reusable part of our code. Allows us to dynamically inject code into this html template,
+        from another child template like home or room-->
+    <div class="content">{% block content %} {% endblock %}</div>
+</body>
+</html>
